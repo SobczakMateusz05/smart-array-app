@@ -12,14 +12,22 @@ FetchContent_Declare(ftxui
 )
 FetchContent_MakeAvailable(ftxui)
 
-add_library(SmartArray src/smartArray/SmartArray.cpp src/smartArray/SmartArray.h)
+add_library(SmartArray INTERFACE)
 
-# Dodaj plik nagłówkowy jeśli potrzebujesz, ale nie jest wymagane w CMakeLists.txt
+add_library(CarLib
+        src/app/Car.cpp
+        src/app/Car.h
+        src/app/CarManager.cpp
+        src/app/CarManager.h
+)
+target_link_libraries(CarLib SmartArray)
 
-add_executable(SmartArrayApp src/app/main.cpp)
-
-# Podłącz bibliotekę FTXUI (komponent i dom są wymagane dla GUI)
-target_link_libraries(SmartArrayApp ftxui::screen ftxui::component SmartArray)
-target_include_directories(SmartArrayApp PRIVATE include model)
+add_executable(SmartArrayApp
+        src/app/main.cpp
+        src/app/CarMenu.cpp
+        src/app/CarMenu.h
+)
+target_link_libraries(SmartArrayApp ftxui::screen ftxui::component SmartArray CarLib)
+target_include_directories(SmartArrayApp PRIVATE src)
 
 add_subdirectory(tests)
