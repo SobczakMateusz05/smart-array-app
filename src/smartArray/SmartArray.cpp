@@ -161,7 +161,7 @@ void SmartArray<T>::erase(unsigned index, unsigned amount) {
         throw std::out_of_range("SmartArray::erase - index is out of range");
     }
 
-    if (index + amount > _size) {
+    if (amount > _size - index) {
         throw std::out_of_range("SmartArray::erase - amount is out of range");
     }
 

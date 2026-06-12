@@ -64,7 +64,8 @@ void CarManager::loadFromFile(const std::string &filename) {
     file.read((char *) &howMany, sizeof(howMany));
 
     for (unsigned i = 0; i < howMany; i++) {
-        int id = 0, year = 0, mileage = 0;
+        unsigned id = 0;
+        int year = 0, mileage = 0;
         std::string brand, model, color;
 
         file.read((char *) &id, sizeof(id));

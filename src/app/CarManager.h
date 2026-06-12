@@ -1,5 +1,5 @@
-#ifndef CARMAANGER_H
-#define CARMAANGER_H
+#ifndef CARMANAGER_H
+#define CARMANAGER_H
 
 #include <string>
 #include "../smartArray/SmartArray.h"
